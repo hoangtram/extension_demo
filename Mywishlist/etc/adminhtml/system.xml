@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="mywishlist" translate="label" sortOrder="10">
+            <label>My Wish List By Me</label>
+        </tab>
+ 
+        <section id="demo_mywishlist" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Demo_Mywishlist</label>
+            <tab>mywishlist</tab>
+            <resource>Demo_Mywishlist::demo_mywishlist</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable My wish list by me</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        Comment for `Enable My Wish List By Me` setting.
+                    </comment>
+                </field>
+                <field id="block_label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Block Label</label>
+                </field>
+<!--                <field id="text_align" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Align</label>
+                    <source_model>Amasty\HelloWorld\Model\Source\Align</source_model>
+                </field>-->
+            </group>
+        </section>
+ 
+    </system>
+</config>

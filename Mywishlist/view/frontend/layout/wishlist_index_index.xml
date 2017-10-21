@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    
+    <body>
+        
+        
+        <referenceContainer name="content">
+            <block class="Demo\Mywishlist\Block\Customer\Wishlist\Item\Column\Category" name="customer.wishlistcategory" template="link.phtml" before="-" cacheable="false"/>
+            <referenceBlock name="customer.wishlist" template="Demo_Mywishlist::view.phtml" cacheable="false">
+                <referenceBlock name="customer.wishlist.items">
+                    <block class="Demo\Mywishlist\Block\Customer\Wishlist\Item\Column\Category" 
+                           name="customer.wishlist.item.category" template="item/column/category.phtml" after="customer.wishlist.item.price" cacheable="false"/>
+                    
+                </referenceBlock>
+                <referenceContainer name="customer.wishlist.buttons">
+                    <referenceBlock name="customer.wishlist.button.update" template="Demo_Mywishlist::button/update.phtml" cacheable="false"/>
+                    
+                </referenceContainer>
+                
+            </referenceBlock>
+            
+        </referenceContainer>
+        
+    </body>
+</page>

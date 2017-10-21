@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account" />
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="wishlist_head_components" template="Demo_Mywishlist::js/components.phtml"/>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Demo\Mywishlist\Block\Index\NewCategory" name="wishlistcategory.newcategory" template="index/newcategory.phtml" cacheable="false"/>
+            <block class="Demo\Mywishlist\Block\Index\ListCategory" name="wishlistcategory.listcategory" template="index/listcategory.phtml" cacheable="false"/>
+            
+        </referenceContainer>
+    </body>
+</page>

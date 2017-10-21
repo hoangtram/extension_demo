@@ -1,0 +1,29 @@
+<?php
+//    $categoryCollection = $block->getCategoryCollection();
+    $item = $block->getItem();
+    $itemId = $item->getWishlistItemId();
+    $collection = $block->getCollection();
+    
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+    $connection = $resource->getConnection();
+    $tableName = $resource->getTableName('demo_mywishlist_category_value');
+    $sql = "Select * FROM " . $tableName." WHERE wishlist_item_id = ".$itemId;
+    $result = $connection->fetchAll($sql);
+    $value_id = 0;
+    foreach ($result as $value) {
+        $value_id =  $value['wishlist_category_id'];
+        
+    }
+    
+?>
+
+<select name="wishlistcategory[<?php /* @escapeNotVerified */ echo $item->getWishlistItemId() ?>]">
+    <option value="">--- Select option ---</option>
+<?php foreach($collection as $c):?>
+
+    <option <?php echo $value_id==$c->getId()?"selected":""; ?> value="<?php echo $c->getId(); ?>"><?php echo $c->getLabel(); ?></option>
+
+    
+<?php endforeach;?>
+</select>

@@ -1,0 +1,27 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$wishlist_category_id = $this->getRequest()->getParam("wishlist_category_id");
+if($wishlist_category_id != null){
+    $model = $block->getWishlistCategoryById($wishlist_category_id);
+}
+
+?>
+<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow()) : ?>
+    <form class="form-wishlist-category" id="wishlist-category-view-form" enctype="multipart/form-data"
+          data-mage-init='{"validation":{}}' action="<?php echo isset($model)?$block->getUrl('demowishlist/index/edit/', ['wishlist_category_id' => $wishlist_category_id]):$block->getUrl('demowishlist/index/add'); ?>" 
+          method="post">
+        <input style="width: 250px; margin-top: 15px" type="text" id="wishlist_category_text" 
+               class="wishlist_category_text" name="wishlist_category_text" placeholder="new wishlist category ..." value="<?php echo isset($model)?$model->getLabel():""; ?>"/>
+        <input style="width: 250px; margin-top: 15px" type="text" id="wishlist_category_description" 
+               class="wishlist_category_description" name="wishlist_category_description" placeholder="description ..." value="<?php echo isset($model)?$model->getDescription():""; ?>"/>
+        <button type="submit" id="wishlist_category_button" class="wishlist_category_button">
+            <span><?php echo isset($model)? __('Update'):__('Add'); ?></span>
+        </button>
+    </form>
+<?php endif; 

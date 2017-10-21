@@ -1,0 +1,40 @@
+<?php
+$collection = $block->getWishlistCategory();
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+ 
+?>
+
+<table class="data-grid">
+    <thead>
+    <tr>
+        <th><?php echo __('Label') ?></th>
+        <th><?php echo __('Description') ?></th>
+        <th><?php echo __('Action') ?></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($collection as $category): ?>
+        <tr>
+            <td><?php echo $category->getLabel() ?></td>
+            <td><?php echo $category->getDescription() ?></td>
+            <td>
+                <a class="action action-edit" type="button" href="<?php echo $block->getUrl('demowishlist/index/add', ['wishlist_category_id' => $category->getId()]); ?>">
+                    <span><?php echo __('Edit') ?></span>
+                    
+                </a>
+                <span> | </span>
+                <a class="action action-delete" href="<?php echo $block->getUrl('demowishlist/index/delete', ['wishlist_category_id' => $category->getId()]); ?>">
+                    <span><?php echo __('Delete') ?></span>
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+
