@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+<!--  group:   index : 1 phút / 1 lần 
+        default : 15 phút / 1 lần
+        custom : tự define-->
+
+    <group id="index">
+        <job name="Cron_restore_quantity_cart" instance="Demo\Cart\Cron\RestoreProductQuantity" method="execute">
+            <schedule>*/30 * * * *</schedule>
+        </job>
+    </group>
+</config>
