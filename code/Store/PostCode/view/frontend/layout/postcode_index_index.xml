@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Store_PostCode::css/form_style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Store\PostCode\Block\Form" name="postcode_form_info" template="Store_PostCode::form_info.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
