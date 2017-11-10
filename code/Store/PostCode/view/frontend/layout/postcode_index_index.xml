@@ -8,6 +8,7 @@ and open the template in the editor.
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="Store_PostCode::css/form_style.css"/>
+        <script src="Store_PostCode::js/jquery-3.2.1.js"/>
     </head>
     <body>
         <referenceContainer name="content">

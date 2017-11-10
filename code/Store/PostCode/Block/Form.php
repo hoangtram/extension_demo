@@ -27,19 +27,41 @@ class Form extends \Magento\Framework\View\Element\Template{
         parent::__construct($context, $data);
     }
     
-    public function getStoreId()
-    {
-        return $this->_storeManager->getStore()->getId();
-    }
+//    public function getStoreId()
+//    {
+//        return $this->_storeManager->getStore()->getId();
+//    }
     
-    public function getStoreUrl(){
-        $$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+    public function getStoreUrl($postCode){
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
         $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
         $connection = $resource->getConnection();
         $tableName = $resource->getTableName('core_config_data');
         
-        $sql = "Select * FROM " . $tableName . " where scope = 'stores' and scope_id in " ;
+        $sql = "SELECT * FROM " . $tableName . " WHERE value = '" . $postCode . "' AND path = 'general/store_information/postcode' ORDER BY config_id DESC" ;
         $result = $connection->fetchAll($sql);
+        $website_id = 0;
+        foreach ($result as $key => $value) {
+            
+            if($key == 0){
+            $website_id = $value["scope_id"];
+            }
+        }
+        
+        
+        $sql = "SELECT * FROM " . $tableName . " WHERE scope = 'websites' AND scope_id = " . $website_id . " AND path = 'web/unsecure/base_url' ORDER BY config_id DESC";
+        
+        $result = $connection->fetchAll($sql);
+        $url = "";
+        foreach ($result as $key => $value) {
+            
+            if($key == 0){
+                $url = $value["value"];
+                
+            }
+        }
+        
+        return $url;
         
     }
 }
