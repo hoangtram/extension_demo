@@ -7,7 +7,46 @@ and open the template in the editor.
     Created on : Nov 8, 2017, 11:37:58 AM
     Author     : HP
 */
+.pc2015-select-menu {
+    margin: 0 auto;
+    width: 500px;
+    height: 300px;
+    background: #cecece;
+    font-weight: bolder;
+}
+.pc2015-zip-1, .pc2015-zip-2, .pc2015-search, .pc2015-zip-search, .result-search{
+    width: 100px !important;
+    height: 30px !important;
+    margin-left: 20px;
+    margin-top: 30px;
+    float: left;
+}
+.pc2015-select-menu-result{
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+    color: #ff6666;
+    display: none;
+}
+.pc2015-search, .pc2015-zip-search{
+    background: #0099ff !important;
+    color: aliceblue !important;
+    text-align: center !important;
+}
+a:hover, a:visited{
+    text-decoration: none;
+}
 
-.pc2015-zip-1{
-    width: 100px;
+.result-text {
+    float: left;
+    width: 60%;
+}
+
+ul {
+    list-style-type: none !important;
+}
+
+.pc2015-select-menu-result ul li span{
+    display: inline-block;
+    width: 20px;
 }

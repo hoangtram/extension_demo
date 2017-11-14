@@ -20,7 +20,10 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        
+//        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+//        $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+//        $storeManager->getStore()->getBaseUrl();
+//        var_dump($storeManager);
         return $this->_pageFactory->create();
     }
 }

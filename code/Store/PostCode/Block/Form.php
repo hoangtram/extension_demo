@@ -38,27 +38,28 @@ class Form extends \Magento\Framework\View\Element\Template{
         $connection = $resource->getConnection();
         $tableName = $resource->getTableName('core_config_data');
         
-        $sql = "SELECT * FROM " . $tableName . " WHERE value = '" . $postCode . "' AND path = 'general/store_information/postcode' ORDER BY config_id DESC" ;
+        $sql = "SELECT scope_id FROM " . $tableName . " WHERE value = '" . $postCode . "' AND path = 'general/store_information/postcode' ORDER BY config_id DESC" ;
         $result = $connection->fetchAll($sql);
-        $website_id = 0;
-        foreach ($result as $key => $value) {
-            
-            if($key == 0){
-            $website_id = $value["scope_id"];
+        
+        $url = [];
+        if($result != null){
+            $scope_id = [];
+            foreach ($result as $value) {
+                $scope_id[] = $value["scope_id"];
             }
+            $in = '(' . implode(',', $scope_id) .')';
+            $sql = "SELECT value FROM " . $tableName . " WHERE scope_id IN " . $in . " AND path = 'web/unsecure/base_url' ORDER BY config_id DESC";        
+            $result = $connection->fetchAll($sql);
+            foreach ($result as $value) {
+                $url[] = $value["value"];
+            }
+            
         }
-        
-        
-        $sql = "SELECT * FROM " . $tableName . " WHERE scope = 'websites' AND scope_id = " . $website_id . " AND path = 'web/unsecure/base_url' ORDER BY config_id DESC";
-        
-        $result = $connection->fetchAll($sql);
-        $url = "";
-        foreach ($result as $key => $value) {
-            
-            if($key == 0){
-                $url = $value["value"];
-                
-            }
+        else{
+            $scope_id = 0;
+            $sql = "SELECT value FROM " . $tableName . " WHERE scope_id = " . $scope_id . " AND path = 'web/unsecure/base_url' ORDER BY config_id DESC";        
+            $result = $connection->fetchAll($sql);
+            $url[] = $result[0]["value"];
         }
         
         return $url;
