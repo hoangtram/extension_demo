@@ -9,11 +9,11 @@ and open the template in the editor.
     <head>
         <css src="Store_PostCode::css/form_style.css"/>
         <script src="Store_PostCode::js/jquery-3.2.1.js"/>
-        <!--<script src="Store_PostCode::js/jquery.cookie.js"/>-->
+        
     </head>
     <body>
-        <referenceContainer name="content">
+<!--        <referenceContainer name="content">
             <block class="Store\PostCode\Block\Form" name="postcode_form_info" template="Store_PostCode::form_info.phtml"/>
-        </referenceContainer>
+        </referenceContainer>-->
     </body>
 </page>

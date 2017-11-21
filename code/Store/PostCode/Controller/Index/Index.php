@@ -1,11 +1,19 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 namespace Store\PostCode\Controller\Index;
+
+/**
+ * Description of Search
+ *
+ * @author HP
+ */
+
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -17,13 +25,9 @@ class Index extends \Magento\Framework\App\Action\Action
             $this->_pageFactory = $pageFactory;
             return parent::__construct($context);
     }
-
     public function execute()
     {
-//        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-//        $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
-//        $storeManager->getStore()->getBaseUrl();
-//        var_dump($storeManager);
+
         return $this->_pageFactory->create();
     }
 }

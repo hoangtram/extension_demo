@@ -5,8 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+if($block->checkCookie()== FALSE){
 ?>
+
 <div class="pc2015-select-menu">
     <div class="pc2015-select-menu-search">
         <input class="pc2015-zip-1" type="text" maxlength="3" id="zip1">
@@ -30,6 +31,7 @@
 <script type="text/javascript">
     
     function doSearch() {
+        
         var zip_code = jQuery("#zip1").val() + jQuery("#zip2").val();
         var is_zip_match = true;
         if(zip_code.match(/[^1234567890]/)){
@@ -47,6 +49,8 @@
             data: { zip: zip_code},
             url:  "postcode/index/search",
             dataType: "json",
+            async: false,
+            cache: false,
             success: function (result) { 
                 
                 //var url = JSON.stringify(result);
@@ -68,16 +72,51 @@
                 
                 var $radios = jQuery('input[name=shopcategory]').change(function () {
                     category = $radios.filter(':checked').val();
-                    jQuery('#result').attr("href", category);
+                    
                 });
-                //alert($.cookie('store'));
-//                $.cookie('store', category );
+                
+                jQuery('#result').attr("href", "#");
+                jQuery('#result').click(function(){
+                    console.log(category);
+                    saveCookie(category);
+                    window.location.href = category;
+                });
+                
             },
             error: function (request, status, error) {
                 alert(request.responseText);
             }
         });
     }
+    
+    function saveCookie(category){
+        jQuery.ajax({
+            type: "GET",
+            data: { url: category},
+            url:  "postcode/index/savecookie",
+            async: false,
+            cache: false,
+            success: function(result){
+                
+                    
+                console.log(result);
+            },
+            error: function (request, status, error) {
+                alert("Save"+request.responseText);
+            }
+        });
+        
+    }
+    
+    
 
 </script>
+<?php 
 
+}else{
+?>
+<div class="img_default">
+    <img src="<?php echo $this->getViewFileUrl('Store_PostCode::images/13344.jpg'); ?>" />
+</div>
+<?php
+}
