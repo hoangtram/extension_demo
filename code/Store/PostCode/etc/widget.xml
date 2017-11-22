@@ -7,7 +7,7 @@ and open the template in the editor.
 
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:hellomagento:Magento_Widget:etc/widget.xsd">
 <widget class="Store\PostCode\Block\Form" id="postcode_widget">
-<label>New Widget</label>
+<label>Post Code Widget</label>
 <description>Posts</description>
 <!--<parameters>
 <parameter name="posts" sort_order="0" visible="true" xsi:type="text">

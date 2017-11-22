@@ -67,7 +67,11 @@ class LoginPost extends \Magento\Customer\Controller\Account\LoginPost {
         $sql = "SELECT postcode FROM " . $tableName . " WHERE entity_id =".$customer_id ;
         $result = $connection->fetchAll($sql);
         $url = $result[0]["postcode"];
-        //die($url);
+        if($url == null){
+            $resultRedirect = $this->resultRedirectFactory->create();
+            $resultRedirect->setPath('*/*/');
+            return $resultRedirect;
+        }
         $resultRedirect = $this->resultRedirectFactory->create();
         $resultRedirect->setUrl($url);
         return $resultRedirect;

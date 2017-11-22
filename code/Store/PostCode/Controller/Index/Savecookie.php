@@ -15,8 +15,8 @@ namespace Store\PostCode\Controller\Index;
  */
 class Savecookie extends \Magento\Framework\App\Action\Action {
     const JOB_COOKIE_NAME = 'path';
-    const JOB_COOKIE_DURATION = 2592000;
-    
+    const JOB_COOKIE_DURATION = 60;
+    //2592000
     protected $_cookieManager;
     protected $_cookieMetadataFactory;
     protected $request;
@@ -58,12 +58,12 @@ class Savecookie extends \Magento\Framework\App\Action\Action {
                 $metadata
             );
             
-//            if($this->customerSession->getCustomer() != null){
-//                $connection = $this->_resource->getConnection('Magento\Framework\App\ResourceConnection');
-//                $tableName = $connection->getTableName('customer_entity');
-//                $cus_id = $this->customerSession->getCustomer()->getId();
-//                $connection->update($tableName, ['postcode' => $url], ['entity_id = ?' => $cus_id]);
-//            }
+            if($this->customerSession->getCustomer() != null){
+                $connection = $this->_resource->getConnection('Magento\Framework\App\ResourceConnection');
+                $tableName = $connection->getTableName('customer_entity');
+                $cus_id = $this->customerSession->getCustomer()->getId();
+                $connection->update($tableName, ['postcode' => $url], ['entity_id = ?' => $cus_id]);
+            }
         
         }
 

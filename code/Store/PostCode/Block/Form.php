@@ -82,7 +82,9 @@ class Form extends \Magento\Framework\View\Element\Template implements \Magento\
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $cookieManager = $objectManager->get('Magento\Framework\Stdlib\CookieManagerInterface');
         $value = $cookieManager->getCookie('path');
-        if($value == null){
+//        var_dump($value);
+//        die("mm");
+        if($value == NULL){
             return false;
         }else{
             return true;
